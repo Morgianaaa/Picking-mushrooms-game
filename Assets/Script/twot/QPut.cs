@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class QPut : MonoBehaviour
+{
+    private Animator animator;
+    private bool isHoldingD = false;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        // ¼ì²âD¼ü°´ÏÂ
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            isHoldingD = true;
+            PlayAnimation();
+        }
+
+        // ¼ì²âD¼üÊÍ·Å
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            isHoldingD = false;
+            ReturnToDefault();
+        }
+    }
+
+    public void PlayAnimation()
+    {
+        // Ö±½ÓÇÐ»»µ½QQQ×´Ì¬
+        animator.Play("QQQ", 0, 0f);
+    }
+
+    private void ReturnToDefault()
+    {
+        // ·µ»ØÄ¬ÈÏ×´Ì¬
+        animator.Play("QOrd", 0, 0f);
+    }
+}
